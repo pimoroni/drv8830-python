@@ -7,7 +7,7 @@ __version__ = '0.0.1'
 
 class VoltageAdapter(Adapter):
     # Calculation is ostensibly 4 * 1.285V (vref) * (vset + 1) / 64
-    # But appears closer to round(4 * 1.285 * i / 64.0 + 0.0001, 2) 
+    # But appears closer to round(4 * 1.285 * i / 64.0 + 0.0001, 2)
     # Then the datasheet goes on to detail individual voltages that
     # neither of these formulae round consistently to.
     # So we'll take some liberties with them instead.
@@ -40,7 +40,7 @@ class DRV8830:
                     'reverse': 0b01,
                     'forward': 0b10,
                     'brake': 0b11
-                })
+                }))
             )),
             Register('FAULT', 0x01, fields=(
                 BitField('clear', 0b10000000),             # Clears fault status bits when written to 1
