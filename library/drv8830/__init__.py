@@ -100,6 +100,9 @@ class DRV8830:
         """
         self._drv8830.set('CONTROL', voltage=voltage)
 
+    def get_voltage(self):
+        return self._drv8830.get('CONTROL').voltage
+
     def get_fault(self):
         """Get motor driver fault information.
 
