@@ -4,6 +4,11 @@ from i2cdevice.adapter import Adapter, LookupAdapter
 
 __version__ = '0.0.1'
 
+I2C_ADDR1 = 0x60  # Default, both select jumpers bridged (not cut)
+I2C_ADDR2 = 0x61  # Cut A0
+I2C_ADDR3 = 0x63  # Cut A1
+I2C_ADDR4 = 0x64  # Cut A0 and A1
+
 
 class VoltageAdapter(Adapter):
     # Calculation is ostensibly 4 * 1.285V (vref) * (vset + 1) / 64
@@ -27,10 +32,10 @@ class VoltageAdapter(Adapter):
 
 
 class DRV8830:
-    def __init__(self, i2c_addr=None, i2c_dev=None):
+    def __init__(self, i2c_addr=I2C_ADDR1, i2c_dev=None):
         self._i2c_addr = i2c_addr
         self._i2c_dev = i2c_dev
-        self._drv8830 = Device(self._i2c_addr, i2c_dev=self._i2c_dev, registers=(
+        self._drv8830 = Device([I2C_ADDR1, I2C_ADDR2, I2C_ADDR3, I2C_ADDR4], i2c_dev=self._i2c_dev, registers=(
             Register('CONTROL', 0x00, fields=(
                 BitField('voltage', 0b11111100, adapter=VoltageAdapter()),     # vset
                 BitField('out2', 0b00000010),                                  # in2
@@ -51,6 +56,12 @@ class DRV8830:
                 BitField('fault', 0b00000001)              # Fault condition exists
             ))
         ))
+
+        self._drv8830.select_address(self._i2c_addr)
+
+    def select_i2c_address(self, i2c_addr):
+        self._i2c_addr = i2c_addr
+        self._drv8830.select_address(self._i2c_addr)
 
     def set_outputs(self, out1, out2):
         self._drv8830.set('CONTROL', out1=out1, out2=out2)
