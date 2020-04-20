@@ -64,25 +64,39 @@ class DRV8830:
         self._drv8830.select_address(self._i2c_addr)
 
     def set_outputs(self, out1, out2):
+        """Set the individual driver outputs.
+        
+        Possible values are 1 (on) and 0 (off) with the following valid permutations:
+
+        * 1 1 - brake
+        * 0 0 - coast
+        * 1 0 - forward
+        * 0 1 - reverse
+    
+        """
         self._drv8830.set('CONTROL', out1=out1, out2=out2)
 
     def brake(self):
+        """Set the driver outputs to braking mode."""
         self.set_direction('brake')
 
     def coast(self):
+        """Set the driver outputs to coasting mode."""
         self.set_direction('coast')
 
     def forward(self):
+        """Set the driver outputs to forward."""
         self.set_direction('forward')
 
     def reverse(self):
+        """Set the driver outputs to reverse."""
         self.set_direction('reverse')
 
     def set_direction(self, direction):
         """Set the motor driver direction.
 
         Basically does the same thing as set_outputs, but takes
-        a string name for directione, one of: coast, reverse,
+        a string name for direction, one of: coast, reverse,
         forward or brake.
 
         :param direction: string name of direction: coast, reverse, forward or brake
@@ -101,6 +115,7 @@ class DRV8830:
         self._drv8830.set('CONTROL', voltage=voltage)
 
     def get_voltage(self):
+        """Return the currently set motor voltage."""
         return self._drv8830.get('CONTROL').voltage
 
     def get_fault(self):
