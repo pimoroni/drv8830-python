@@ -9,13 +9,13 @@
 
 Stable library from PyPi:
 
-* Just run `sudo pip install drv8830`
+* Just run `python3 -m pip install drv8830`
 
 Latest/development library from GitHub:
 
 * `git clone https://github.com/pimoroni/drv8830-python`
 * `cd drv8830-python`
-* `sudo ./install.sh`
+* `sudo ./install.sh --unstable`
 
 
 # Changelog
