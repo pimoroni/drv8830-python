@@ -1,6 +1,6 @@
 # DRV8830 Motor Driver Breakout
 
-[![Build Status](https://shields.io/github/workflow/status/pimoroni/drv8830-python/Python%20Tests.svg)](https://github.com/pimoroni/icm2098-python/actions/workflows/test.yml)
+[![Build Status](https://shields.io/github/workflow/status/pimoroni/drv8830-python/Python%20Tests.svg)](https://github.com/pimoroni/drv8830-python/actions/workflows/test.yml)
 [![Coverage Status](https://coveralls.io/repos/github/pimoroni/drv8830-python/badge.svg?branch=master)](https://coveralls.io/github/pimoroni/drv8830-python?branch=master)
 [![PyPi Package](https://img.shields.io/pypi/v/drv8830.svg)](https://pypi.python.org/pypi/drv8830)
 [![Python Versions](https://img.shields.io/pypi/pyversions/drv8830.svg)](https://pypi.python.org/pypi/drv8830)
