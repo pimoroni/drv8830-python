@@ -1,6 +1,5 @@
-from i2cdevice import Device, Register, BitField
+from i2cdevice import BitField, Device, Register
 from i2cdevice.adapter import Adapter, LookupAdapter
-
 
 __version__ = '0.0.1'
 
@@ -65,14 +64,14 @@ class DRV8830:
 
     def set_outputs(self, out1, out2):
         """Set the individual driver outputs.
-        
+
         Possible values are 1 (on) and 0 (off) with the following valid permutations:
 
         * 1 1 - brake
         * 0 0 - coast
         * 1 0 - forward
         * 0 1 - reverse
-    
+
         """
         self._drv8830.set('CONTROL', out1=out1, out2=out2)
 

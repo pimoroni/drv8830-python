@@ -1,4 +1,3 @@
 [run]
-source = drv8830
 omit =
     .tox/*
