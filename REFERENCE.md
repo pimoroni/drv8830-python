@@ -95,7 +95,7 @@ Set the individual driver outputs. Eg:
 ```python
 drv8830.set_outputs(1, 0)
 ```
-        
+
 Possible values are 1 (on) and 0 (off) with the following valid permutations:
 
 * 1 1 - brake
